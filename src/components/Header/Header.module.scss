@@ -42,7 +42,7 @@ $fontsize: 16px;
     list-style: none;
     display: flex;
     justify-content: left;
-    width: 25vw;
+    width: 80%;
   }
 
   .nav_links {
@@ -64,8 +64,11 @@ $fontsize: 16px;
 
 
 
-.header.active {
+.header_active {
   background: #101011;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .search {

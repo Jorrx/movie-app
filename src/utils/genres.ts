@@ -1,4 +1,4 @@
-export const genres = {
+export const genres : any = {
     '28': "Action",
     '12': "Adventure",
     '16': "Animation",

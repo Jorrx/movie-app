@@ -1,0 +1,25 @@
+:root {
+  --x: 0%;
+}
+
+button {
+  height: 50px;
+  min-height: 50px;
+  position: relative;
+  color: white;
+  border-radius: 7px;
+  border: 1px solid blue;
+  font-size: 14px;
+  background: linear-gradient(
+                  90deg,
+                  rgba(7, 22, 103, 1) 0%,
+                  rgba(55, 83, 198, 1) var(--x),
+                  rgba(7, 22, 103, 1) 100%
+  );
+  backdrop-filter: blur(5px);
+}
+
+
+button:focus {
+  outline: none;
+}

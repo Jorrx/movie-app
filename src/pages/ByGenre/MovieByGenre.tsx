@@ -5,6 +5,7 @@ import NewMoviesItem from "../../components/NewMoves/NewMoviesItem";
 import styles from './MovieByGenre.module.scss'
 import HomeMovieItem from "../../components/HomeMovieItems/HomeMovieItem";
 import {genres} from "../../utils/genres";
+import MyLoader from "../../components/UI/MyLoader/MyLoader";
 
 const MovieByGenre = () => {
     const {id} = useParams()
@@ -13,13 +14,10 @@ const MovieByGenre = () => {
     const {data, error, isLoading} = movieApi.useGetByGenreQuery(id)
 
     return (
-
-        isLoading ? (<h2 style={{color: "white", background: 'white'}}>
-                Loading...
-            </h2>)
+        isLoading ? (<MyLoader/>)
             :
             <div className={'container'}>
-                <h2>{genres['12']}</h2>
+                <h2 style={{color:'white'}}>{id && genres[id]}</h2>
                 <div className={styles.movie}>
                     {data?.results.map((movie) => {
                         return (movie.poster_path && movie.backdrop_path) &&

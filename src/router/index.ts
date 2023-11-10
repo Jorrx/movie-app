@@ -1,7 +1,8 @@
 import Home from "../pages/Home/Home";
 import Movie from "../pages/Movie/Movie";
-import { GENRE_ROUTE, HOME_ROUTE, MOVIE_ITEM_ROUTE } from "../utils/routes";
+import {AUTH_ROUTE, GENRE_ROUTE, HOME_ROUTE, MOVIE_ITEM_ROUTE} from "../utils/routes";
 import MovieByGenre from "../pages/ByGenre/MovieByGenre";
+import Auth from "../pages/Auth/Auth";
 
 
 
@@ -31,6 +32,10 @@ export const publicRoute:IRoute[] = [
     {
         path:MOVIE_ITEM_ROUTE+'/:id',
         Element:Movie
+    },
+    {
+        path:AUTH_ROUTE,
+        Element:Auth
     }
 ]
 

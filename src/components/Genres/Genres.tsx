@@ -1,9 +1,10 @@
-import {FC, useEffect, useState} from 'react'
+import React, {FC, useEffect, useState} from 'react'
 import './Genres.css'
 import movieRequests from '../../requets/requst';
 import SimpleSlider from "../slide/SimpleSlider";
 import {SwiperSlide} from "swiper/react";
 import {GENRE_ROUTE} from "../../utils/routes";
+import {Link} from "react-router-dom";
 
 interface IGenre {
     id: number;
@@ -34,10 +35,13 @@ const Genres: FC = () => {
                     slidesPerView={9}
                     navigation={false}
                     className={'genre_Swiper'}>
-                    {genres.map((genre,idx) =>
+
+                    {genres.map((genre, idx) =>
                         <SwiperSlide key={genre.id}>
                             <div>
-                                <a className={'genres_item'} href={`${GENRE_ROUTE}/${genre.id}`}>{genre.name}</a>
+                                <Link to={`${GENRE_ROUTE}/${genre.id}`}>
+                                    <a className={'genres_item'}>{genre.name}</a>
+                                </Link>
                             </div>
                         </SwiperSlide>
                     )}
