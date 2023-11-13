@@ -3,6 +3,7 @@ import './MyButton.scss'
 
 interface IProps {
     children: React.ReactNode
+    onClick?: () => void
 }
 
 const MyButton = ({children , ...props}: IProps) => {
@@ -19,7 +20,7 @@ const MyButton = ({children , ...props}: IProps) => {
     };
 
     return (
-        <button onMouseMove={onMouseMove} style={buttonStyle}>{children}</button>
+        <button  onMouseMove={onMouseMove} {...props} style={buttonStyle}>{children}</button>
     );
 };
 

@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 
+:root{
+    --current-header-height:100px;
+    --color-1: #101011;
+    --color-2: #101011;
+    --fs:16px;
+}
+
 a{
     text-decoration: none;
 }
@@ -41,3 +48,5 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+
