@@ -1,10 +1,18 @@
 export interface IMovies {
     id: number,
+    title:string,
     backdrop_path: string,
     original_title: string,
     release_date: string,
     vote_average: number,
     poster_path: string
+}
+
+export interface IMovieInfo extends IMovies{
+    overview:string,
+    production_companies:any[]
+    production_countries:any[]
+    videos:any
 }
 
 export interface IMovieCorrect extends IMovies {
@@ -16,6 +24,8 @@ export interface IMovieCorrect extends IMovies {
         }
     ]
 }
+
+
 
 type videosType = {
     key: string

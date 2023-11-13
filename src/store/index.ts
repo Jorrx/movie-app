@@ -2,8 +2,10 @@ import {movieApi} from '../services/MovieServices'
 import {combineReducers} from "redux"
 import {configureStore} from "@reduxjs/toolkit";
 import {TypedUseSelectorHook, useSelector} from "react-redux";
+import {searchReducer} from './reducers/searchSlice'
 
 const rootReducers = combineReducers({
+    searchReducer,
     [movieApi.reducerPath]: movieApi.reducer,
 })
 

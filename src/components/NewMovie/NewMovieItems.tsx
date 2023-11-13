@@ -1,10 +1,9 @@
 import React, {FC} from 'react';
 import SimpleSlider from "../slide/SimpleSlider";
-import HomeMovieItem from "../HomeMovieItems/HomeMovieItem";
+import MovieItem from "../HomeMovieItems/MovieItem";
 import {IMovies} from "../../types/types";
 import {SwiperSlide} from "swiper/react";
 import SliderLists from "../SliderLists";
-import NewMoviesItem from "./NewMoviesItem";
 
 interface IProps {
     popularFilms: IMovies[]
@@ -15,18 +14,17 @@ interface IProps {
     isCenterItems?: boolean
 }
 
-export default function NewFilms(
+export default function NewMovieItems(
     {
         popularFilms,
         className,
-        slidesPerGroup=1,
-        slidesPerView=6,
+        slidesPerGroup = 1,
+        slidesPerView = 6,
         loop = false,
         isCenterItems = false
     }: IProps) {
     return (
         <>
-            <h2 style={{color: 'white'}}>New Movies</h2>
             {popularFilms.length &&
             <SimpleSlider
                 slidesPerView={slidesPerView}
@@ -40,9 +38,9 @@ export default function NewFilms(
                         {
                             className === 'mySwiper'
                                 ?
-                                <NewMoviesItem movie={movie}/>
+                                <MovieItem movie={movie} backdrop_path={movie.backdrop_path} className={'mySwiper'}/>
                                 :
-                                <HomeMovieItem movie={movie}/>
+                                <MovieItem movie={movie}/>
                         }
                     </SwiperSlide>
                 )}

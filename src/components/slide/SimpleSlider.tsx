@@ -59,7 +59,6 @@ const SimpleSlider: FC<ISwiper> = (
         className,
         navigation = true,
     }) => {
-        console.log(navigation , slidesPerGroup)
     return (
         <>
             <Swiper

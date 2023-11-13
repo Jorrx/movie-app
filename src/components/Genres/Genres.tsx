@@ -1,32 +1,22 @@
-import {FC, useEffect, useState} from 'react'
+import React, {FC, useEffect, useState} from 'react'
 import './Genres.css'
-import movieRequests from '../../requets/requst';
 import SimpleSlider from "../slide/SimpleSlider";
 import {SwiperSlide} from "swiper/react";
 import {GENRE_ROUTE} from "../../utils/routes";
+import {Link} from "react-router-dom";
+import { movieApi } from '../../services/MovieServices';
 
-interface IGenre {
+export interface IGenre {
     id: number;
     name: string;
 }
 
 const Genres: FC = () => {
-    const [genres, setGenres] = useState<IGenre[]>([])
-    const getGenres = async () => {
-        try {
-            const request = await movieRequests.getGenres()
-            setGenres(request)
-            console.log(request)
-        } catch (e) {
-            console.log(e)
-        }
-    }
+   const {data} = movieApi.useGetGenresQuery()
 
-    useEffect(() => {
-        getGenres()
-    }, [])
 
     return (
+
         <div className={'movie_genres'}>
             <div className={'container'}>
                 <SimpleSlider
@@ -34,10 +24,13 @@ const Genres: FC = () => {
                     slidesPerView={9}
                     navigation={false}
                     className={'genre_Swiper'}>
-                    {genres.map((genre,idx) =>
+
+                    {data?.genres?.map((genre) =>
                         <SwiperSlide key={genre.id}>
                             <div>
-                                <a className={'genres_item'} href={`${GENRE_ROUTE}/${genre.id}`}>{genre.name}</a>
+                                <Link to={`${GENRE_ROUTE}/${genre.id}`} className={'genres_item'}>
+                                    {genre.name}
+                                </Link>
                             </div>
                         </SwiperSlide>
                     )}

@@ -1,52 +1,61 @@
-import {Interface} from 'readline'
-import {IMovieCorrect, IMovies} from '../../types/types'
-import {useParams} from "react-router-dom";
-import React, {FC, useEffect, useState} from 'react'
-import movieRequests from '../../requets/requst'
-import axios from "axios";
+import { useParams } from "react-router-dom";
+import React, { FC, useState } from 'react'
 import styles from './Movie.module.scss'
+import { movieApi } from "../../services/MovieServices";
+import MyLoader from "../../components/UI/MyLoader/MyLoader";
+import Error from "../Error/Error";
+import MyButton from "../../components/UI/MyButton/MyButton";
+import YouTube from 'react-youtube';
+import MyModal from "../../components/UI/MyModal/MyModal";
 
 
 const Movie: FC = () => {
-    const {id} = useParams()
-    const [movie, setMovie] = useState<IMovieCorrect | null>(null)
+    const { id } = useParams()
+    const { data: movie, isLoading, error } = movieApi.useGetMovieQuery(id)
+    const [modal , setModal] = useState<boolean>(false)
 
-    const getMovie = async () => {
-        const requestHeader = {
-            headers: {
-                accept: 'application/json',
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMDM3NGQ5Mzc4OGZmNTQ5NGZkNWU3ZTViNDNkNWYxNyIsInN1YiI6IjYzZGE2OTAyMjJkZjJlMDA4Y2NhZDRkYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.pVX1OTXOqmroHxqDAIw4_OzoV4OhCw8hdqlXSUeK6-c'
-            }
-        }
-        try {
-            const req = await axios.get(`https://api.themoviedb.org/3/movie/${id}`, requestHeader)
-            const {data} = req
-            console.log(data)
-            setMovie(data)
-        } catch (err) {
-            console.log(err)
-        }
-
+    if (isLoading) {
+        return <MyLoader />
     }
 
-    useEffect(() => {
-        getMovie()
-    }, [])
+    if (error) {
+        return <Error />
+    }
 
-    return <div className={styles.movie_Item} style={{color: 'white'}}>
+    const watchFilm = () => {
+        setModal(true)
+    }
+
+    return <div className={styles.movie_Item} style={{ color: 'white' }}>
         {movie?.id
-        &&
-        <div className={'movie_item_inner'}
-             style={{background: `url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`}}>
-            <div className={styles.movie_info}>
-                <div>
-                    {movie.overview}
+            &&
+            <div className={styles.movie_item_inner}
+                style={{ background: `url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})` }}>
+
+                <div className={styles.movieItem_Info}>
+                    <h2>
+                        {movie.title}
+                    </h2>
+                    <div>
+                        <div className={styles.vote_average}>
+                            {movie.vote_average}
+                        </div>
+                        <div>
+                            {movie.release_date}
+                        </div>
+                    </div>
+                    <div>
+                        {movie.overview}
+                    </div>
+                    <div>
+                        <MyButton onClick={watchFilm}>Watch Film</MyButton>
+                    </div>
                 </div>
-                <div>
-                    {movie?.production_companies[0]?.name}
-                </div>
-            </div>
-        </div>}
+            </div>}
+        {modal && <MyModal visible={modal} setVisible={setModal}>   
+            <YouTube videoId={movie?.videos.results[movie?.videos.results.length - 1]?.key} />
+        </MyModal>}
+
     </div>
 }
 

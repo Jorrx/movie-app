@@ -1,3 +1,4 @@
+
 $color: #7D7D7D;
 $fontsize: 16px;
 
@@ -19,7 +20,8 @@ $fontsize: 16px;
   top: 0;
   z-index: 9999;
   width: 100%;
-  padding: 15px 40px;
+  height: var(--current-header-height);
+  padding: 0 40px;
   background: black;
   display: flex;
   justify-content: center;
@@ -42,7 +44,7 @@ $fontsize: 16px;
     list-style: none;
     display: flex;
     justify-content: left;
-    width: 25vw;
+    width: 80%;
   }
 
   .nav_links {
@@ -64,26 +66,13 @@ $fontsize: 16px;
 
 
 
-.header.active {
+.header_active {
   background: #101011;
-}
-
-.search {
   display: flex;
-  justify-content: end;
-  width: 80%;
-
-  input {
-    padding: 5px;
-    outline: none;
-    width: 80%;
-    background: none;
-    border: none;
-    color: white;
-    font-size: $fontsize;
-  }
-
+  justify-content: center;
+  align-items: center;
 }
+
 
 img {
   fill: white;

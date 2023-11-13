@@ -1,5 +1,5 @@
 import React from 'react';
-import NewMovies from "../../components/NewMoves/NewMovies";
+import NewMovies from "../../components/NewMovie/NewMovie";
 import Genres from "../../components/Genres/Genres";
 
 
