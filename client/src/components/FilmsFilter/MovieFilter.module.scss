@@ -1,0 +1,85 @@
+:root {
+  --fillterWidth: 10px 100px;
+}
+
+.movieFilter{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .movieFilterLeftSide{
+    display: flex;
+    align-items: center;
+    p{
+      background: var(--color-1);
+      color: white;
+      margin: 0 10px ;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  }
+  div{
+    margin: 10px 5px 10px 0;
+  }
+}
+
+.filter {
+  color: white;
+  display: inline-block;
+}
+
+.filter_Name {
+  background: var(--color-2);
+  padding: 5px 40px;
+  border-radius: 6px;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: none;
+
+}
+
+.filter_Items {
+  margin-top: 10px;
+  border-radius: 6px;
+  position: absolute;
+  text-align: left;
+  z-index: 111;
+  background: var(--color-2);
+  height:300px;
+  overflow-y: auto;
+  -ms-scroll-chaining: none;
+
+
+  div:last-child {
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+  }
+
+  div:first-child {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+  }
+
+  div {
+    width: 200px;
+    padding: 10px 20px;
+    background: var(--color-2);
+    transition: .1s all ease;
+
+  }
+  div:hover{
+    background: #303033;
+  }
+}
+
+
+.carlist{
+  display: inline-block;
+  padding: 5px 25px;
+  background: var(--color-2);
+  option{
+    background: #101011;
+  }
+}

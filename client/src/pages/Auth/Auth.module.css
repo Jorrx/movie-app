@@ -1,0 +1,16 @@
+.auth{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../assets/background.jpg');
+    background-repeat: no-repeat;
+
+}
+
+.auth div{
+    position: absolute;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+}

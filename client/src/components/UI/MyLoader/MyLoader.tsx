@@ -1,26 +1,15 @@
-import React from 'react';
+import React, {memo} from 'react';
 import styles from './MyLoader.module.scss'
 
 const MyLoader = () => {
 
     return (
         <div className={styles.center}>
-            <div className={styles.loader}>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+            <span className={styles.loader}>
+               {/* <img src={logo} alt="loader" /> */}
+            </span>
         </div>
     );
 };
 
-export default MyLoader;
+export default memo(MyLoader);

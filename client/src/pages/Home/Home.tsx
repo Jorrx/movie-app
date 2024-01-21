@@ -1,16 +1,17 @@
-import React from 'react';
+import React, {memo} from 'react';
 import NewMovies from "../../components/NewMovie/NewMovie";
-import Genres from "../../components/Genres/Genres";
+import Header from "../../components/Header/Header";
 
 
 const Home = () => {
 
     return (
-        <div>
-            <NewMovies />
-            <div style={{marginTop:'100px'}}></div>
-        </div>
-    );
+        <>
+            <Header/>
+            <NewMovies/>
+        </>
+)
+
 };
 
-export default Home;
+export default memo(Home);

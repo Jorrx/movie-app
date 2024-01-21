@@ -7,7 +7,7 @@ import {FILM_ITEM_ROUTE} from "../../utils/routes";
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { setSearch, setVisible } from '../../store/reducers/searchSlice';
 
-const SearchFilms = () => {
+const SearchFilms = memo(() => {
     const {search} = useAppSelector(state => state.searchReducer)
     const dispatch = useAppDispatch()
     const [value, setValue] = useState<string>('')
@@ -19,7 +19,7 @@ const SearchFilms = () => {
         debouncedSearch(e.target.value)
     }
 
-    function searching(e: string) {
+    function searching(e: string) {        
         dispatch(setSearch(e))
     }
 
@@ -46,6 +46,6 @@ const SearchFilms = () => {
         </>
     );
 
-};
+});
 
-export default memo(SearchFilms);
+export default SearchFilms

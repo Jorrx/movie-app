@@ -1,15 +1,23 @@
 import Home from "../pages/Home/Home";
 import Movie from "../pages/Movie/Movie";
-import { AUTH_ROUTE, FILMS_ROUTE, FILM_ITEM_ROUTE, GENRE_ROUTE, HOME_ROUTE, } from "../utils/routes";
+import {
+    AUTH_ROUTE,
+    FILMS_ROUTE,
+    FILM_ITEM_ROUTE,
+    GENRE_ROUTE,
+    HOME_ROUTE,
+    LOGIN_ROUTE,
+    REGISTER_ROUTE,
+    PROFILE_ROUTE
+} from "../utils/routes";
 import Movies from "../pages/Movies/Movies";
 import Auth from "../pages/Auth/Auth";
-
+import Profile from '../pages/User/Profile'
 
 export interface IRoute {
     path: string
     Element: React.ComponentType;
 }
-
 
 
 export const publicRoute: IRoute[] = [
@@ -18,11 +26,11 @@ export const publicRoute: IRoute[] = [
         Element: Home
     },
     {
-        path: FILMS_ROUTE + GENRE_ROUTE + '/:id',
+        path: FILMS_ROUTE,
         Element: Movies
     },
     {
-        path: FILMS_ROUTE ,
+        path: FILMS_ROUTE,
         Element: Movies
     },
     {
@@ -30,9 +38,35 @@ export const publicRoute: IRoute[] = [
         Element: Movie
     },
     {
-        path: AUTH_ROUTE,
+        path: PROFILE_ROUTE,
+        Element: Profile
+    }
+]
+
+
+export const authRoutes: IRoute[] = [
+    {
+        path: LOGIN_ROUTE,
+        Element: Auth
+    },
+    {
+        path: REGISTER_ROUTE,
         Element: Auth
     }
 ]
+
+
+export const navigationLinks = [
+    {
+        path: HOME_ROUTE,
+        name:'Main'
+    },
+    {
+        path: FILMS_ROUTE,
+        name:'Films'
+
+    }
+]
+
 
 

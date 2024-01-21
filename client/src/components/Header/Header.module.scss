@@ -1,7 +1,11 @@
-
 $color: #7D7D7D;
 $fontsize: 16px;
-
+%headerSm {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
 
 %flex-element {
   display: flex;
@@ -9,11 +13,18 @@ $fontsize: 16px;
 }
 
 %container {
-  width: 90%;
+ padding: 10%;
   justify-content: center;
 }
 
-
+.menuBar {
+  position: absolute;
+  top:20px;
+  left: 20px;
+  z-index: 99999;
+  color: white;
+  display: none;
+}
 
 .header {
   position: sticky;
@@ -49,12 +60,13 @@ $fontsize: 16px;
 
   .nav_links {
     margin-left: 10px;
-    font-size: 16px;
+    font-size: $fontsize;
     font-weight: 600;
     padding: 5px 10px;
     color: $color;
     line-height: 24px;
     display: inline-block;
+    cursor: pointer;
   }
 
   .header-right {
@@ -64,7 +76,6 @@ $fontsize: 16px;
     align-items: center;
   }
 }
-
 
 
 .header_active {
@@ -80,7 +91,33 @@ img {
 }
 
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1080px) {
+  .menuBar {
+    display: block;
+    cursor: pointer;
+  }
+  .header {
+    display: none;
+  }
+  .smHeader {
+    display: flex;
+    flex-direction: column;
 
-  
+    margin: 0;
+    height: auto;
+  }
+
+  .nav {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+
+    .ul {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+  }
 }

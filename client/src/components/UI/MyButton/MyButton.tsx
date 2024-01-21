@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import './MyButton.scss'
+import React, {memo, useState} from 'react';
+import styles from './MyButton.module.scss'
 
 interface IProps {
     children: React.ReactNode
@@ -20,8 +20,8 @@ const MyButton = ({children , ...props}: IProps) => {
     };
 
     return (
-        <button  onMouseMove={onMouseMove} {...props} style={buttonStyle}>{children}</button>
+        <button  onMouseMove={onMouseMove} {...props} style={buttonStyle} className={styles.myButton}>{children}</button>
     );
 };
 
-export default MyButton;
+export default memo(MyButton);

@@ -1,10 +1,11 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, {FC, memo, useEffect, useState} from 'react'
 import './Genres.css'
 import SimpleSlider from "../slide/SimpleSlider";
 import { SwiperSlide } from "swiper/react";
 import {FILMS_ROUTE, GENRE_ROUTE } from "../../utils/routes";
 import { Link } from "react-router-dom";
 import { movieApi } from '../../services/MovieServices';
+import {genres} from "../../utils/genres";
 
 export interface IGenre {
     id: number;
@@ -28,7 +29,7 @@ const Genres: FC = () => {
                     {data?.genres?.map((genre) =>
                         <SwiperSlide key={genre.id}>
                             <div>
-                                <Link to={`${FILMS_ROUTE + GENRE_ROUTE}/${genre.id}`} className={'genres_item'}>
+                                <Link to={FILMS_ROUTE + '?genre='+genres[genre.id]} className={'genres_item'}>
                                     {genre.name}
                                 </Link>
                             </div>
@@ -40,4 +41,4 @@ const Genres: FC = () => {
     )
 }
 
-export default Genres
+export default memo(Genres)

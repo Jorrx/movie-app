@@ -64,9 +64,10 @@
     }
   }
 
-  main_movie_listItem:hover {
+}
 
-  }
+.movie_Profile_Items{
+
 }
 
 .film_page_items {
@@ -79,7 +80,7 @@
 }
 
 .film_page_items:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   animation: 1.5s;
 
   .main_movie_listItem{

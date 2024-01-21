@@ -13,7 +13,7 @@ interface HomeMovieItemsProps {
 
 export default function MovieItem({backdrop_path,className, ...props}: HomeMovieItemsProps) {
 
-    const ImgPath = backdrop_path || props.movie.poster_path
+    const ImgPath = backdrop_path || props?.movie?.poster_path
     return (
         <Link to={`${FILM_ITEM_ROUTE}/${props.movie.id}`} className={styles[`${className}`]}>
             <div className={styles.main_movie_listItem} style={{

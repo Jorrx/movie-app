@@ -1,4 +1,4 @@
-import React, { Children, useState } from 'react'
+import React, {Children, memo, useState} from 'react'
 import styles from './MyModal.module.scss'
 
 interface IProps {
@@ -17,4 +17,4 @@ const MyModal = ({ children, visible = false, setVisible, ...props }: IProps) =>
 
 }
 
-export default MyModal
+export default memo(MyModal)

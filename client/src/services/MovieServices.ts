@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { requestHeader } from "../requets/requst";
 import { IMovieInfo, IMovies } from "../types/types";
 import { IGenre } from "../components/Genres/Genres";
-import { FilterSlice } from "../store/reducers/filterSlice";
+import { IFilterSlice } from "../store/reducers/IFilterSlice";
 
 
 export interface INewMovie {
@@ -14,9 +14,8 @@ export interface INewGenres {
 }
 
 interface IQuery {
-    id?: string
     page?: number
-    filter: FilterSlice
+    filter: IFilterSlice
 }
 
 
@@ -41,8 +40,8 @@ export const movieApi = createApi({
                 })
             }),
             getByGenre: build.query<INewMovie, IQuery>({
-                query: ({ id, page = 1 , filter }) => ({
-                    url: `/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=primary_release_date.desc&vote_count.gte=150&with_genres=${id}${filter.filter.rating}&vote_average.lte=10.0`,
+                query: ({ page = 1 , filter }) => ({
+                    url: `/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=primary_release_date.desc&vote_count.gte=150&with_genres=${filter.filter.genre}${filter.filter.rating}&vote_average.lte=10.0`,
                     headers: requestHeader.headers,
                 })
             }),
